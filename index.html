@@ -1,38 +1,308 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home | Mirte Theunis</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/stijl.css">
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Parisienne&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio Mirte Theunis</title>
+
+    <!-- Google Fonts for Cursive Heading -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+            background-color: #F5E2E3;
+            color: #333;
+        }
+        h1, h2 {
+            font-family: 'Great Vibes', cursive;
+            color: #DEA5A4;
+        }
+        p {
+            font-family: 'Montserrat', sans-serif;
+            color: #555;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #DEA5A4;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            color: #F5E2E3;
+            transition: color 0.3s;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 20px;
+            min-height: 50vh;
+            position: relative;
+        }
+
+        #intro {
+            background-color: white;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        #about, #contact, #projects {
+            background-color: #F5E2E3;
+            margin: 50px 20px 0px 20px;
+            padding: 50px 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Intro Section */
+        #intro h1 {
+            font-size: 4em;
+        }
+
+        #intro h2 {
+            font-size: 2.5em;
+            margin-top: -15px;
+        }
+
+        /* About and contact sections*/
+        /* About Section Styling */
+        #about {
+            background-color: #F5E2E3;
+            margin-top: 50px;
+            padding: 80px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .about-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .about-text h2 {
+            font-family: 'Great Vibes', cursive;
+            color: #DEA5A4;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-family: 'Montserrat', sans-serif;
+            color: #555;
+            font-size: 1em;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        #contact h2 {
+            font-size: 2.5em;
+        }
+
+        section a {
+            color: #333;
+        }
+
+        /* Projects Section Styling */
+        #projects h2 {
+            text-align: center;
+            font-size: 3em;
+        }
+
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .project {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 1s forwards ease-in-out;
+            animation-delay: var(--delay);
+        }
+
+        /* Fade up animation for projects */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Project hover effect */
+        .project:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .project img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .project h3 {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8em;
+            color: #DEA5A4;
+        }
+
+        /* Contact styling */
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #DEA5A4;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #DEA5A4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
-<header>
-    <h1>Mirte Theunis</h1>
+
+    <!-- Navbar -->
     <nav>
-        <ul>
-            <li><a href="home.html" id="active">Home</a></li>
-            <li><a href="cv.html">Cv</a></li>
-            <li><a href="projecten.html">Projecten</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+        <a href="#intro">Home</a>
+        <a href="#about">Over mij</a>
+        <a href="#projects">Projecten</a>
+        <a href="#contact">Contact</a>
     </nav>
-</header>
-<main>
-    <h2>Welkom</h2>
-    <p class="tekstHome">
-        Hi, ik ben Mirte Theunis, 23 jaar en vol passie voor alles wat te maken heeft met design en technologie. 
-        <br>Momenteel volg ik de opleiding Digital Experience Design aan Thomas More, waar ik leer hoe ik de perfecte digitale ervaringen kan creëren. 
-        Met een Bachelor in Toegepaste Informatica en een Master in Informatiemanagement op zak, combineer ik technische skills met een creatieve blik op de toekomst.
-        <br><br>Als ik niet in de design tools duik, kan je me waarschijnlijk vinden op de dansvloer — mijn grote passie die me helpt om in beweging te blijven, zowel fysiek als mentaal. 
-        Daarnaast geniet ik ervan om mijn creativiteit de vrije loop te laten of iets te drinken met vriendinnen, omdat het leven nu eenmaal draait om die kleine, spontane momenten.
-        <br><br> Welkom op mijn portfolio, waar techniek en creativiteit samenkomen!
-    </p>
-</main>
-<footer>
-</footer>
+
+    <!-- Intro Section -->
+    <section id="intro">
+        <h1>Welkom op mijn portfolio</h1>
+        <h2>Mirte Theunis</h2>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Over mij</h2>
+                <p>Hallo, ik ben Mirte Theunis, 23 jaar en vol passie voor alles wat te maken heeft met design en technologie. 
+                    <br>Momenteel volg ik de opleiding Digital Experience Design aan Thomas More, waar ik leer hoe ik de perfecte digitale ervaringen kan creëren. 
+                    <br>Met een Bachelor in Toegepaste Informatica en een Master in Informatiemanagement op zak, combineer ik technische skills met een creatieve blik op de toekomst.
+                    <br><br>Als ik niet in de design tools duik, kan je me waarschijnlijk vinden op de dansvloer — mijn grote passie die me helpt om in beweging te blijven, zowel fysiek als mentaal. 
+                    <br>Daarnaast geniet ik ervan om mijn creativiteit de vrije loop te laten of iets te drinken met vriendinnen, omdat het leven nu eenmaal draait om die kleine, spontane momenten.
+                    <br><br> Welkom op mijn portfolio, waar techniek en creativiteit samenkomen!</p>
+                    <p>Meer over mijn opleidingen en andere ervaringen, kan je vinden op mijn CV.</p>
+                    <p><a href="/img/MirteTheunis_CV.pdf" download class="link">Klik hier om mijn cv te downloaden</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Mijn Projecten</h2>
+        <div class="project-container">
+            <!-- Project 1 -->
+            <div class="project" style="--delay: 0s;">
+                <img src="img/p1.1.png" alt="Project 1 Image">
+                <h3>Website Chateau de l'Ardoisière</h3>
+                <p>Voor het vak Webontwikkeling 1 heb ik voor een klant een statische website gemaakt.
+                    Zoals u ziet heb ik mijn e-portfolio hierop gebaseerd. Dit omdat ik best trots was op de
+                    lay-out van de website. Voor dit project heb ik enkel gebruik gemaakt van HTML en CSS.</p>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project" style="--delay: 0.5s;">
+                <img src="img/p2.2.png" alt="Project 2 Image">
+                <h3>Corona registratie</h3>
+                <p>Voor het vak Webontwikkeling 3 kregen we de opdracht om een website te maken voor een
+                    bepaalde organisatie waarop informatie bijgehouden kon worden in verband met COVID-19. Enkele dingen
+                    die geïmplementeerd zijn, zijn: een login/logout, het registreren van nieuwe leden, alsook het verwijderen
+                    van leden, het registreren en verwijderen van contactmomenten van leden, een positieve corona test aangeven,
+                    kijken met wie je in contact ben geweest sinds je positieve test en met wie je in een bepaalde les op een gegeven
+                    dag en tijdstip was. We maakte gebruik van HTML, CSS en Java.</p>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project" style="--delay: 0.8s;">
+                <img src="img/p3.2.png" alt="Project 3 Image">
+                <h3>Gokspel</h3>
+                <p>Voor het vak OOO (Object Oriented Ontwerp) heb ik samen met een mede-studente een kleine applicatie
+                    ontwikkeld, een gokspel. Hierbij kan je verschillende strategieën kiezen om op te gokken en daarna een dobbelsteen
+                    werpen. Je hebt na 2 worpen de kans om je inzet te verhogen. Voor de admin zijn er verschillende tabs, namelijk:
+                    spelverloop, spelers, statistieken en instellingen. Bij instellingen kan de admin aanduiden welke strategieën
+                    gebruikt worden en wat de winstfactor per strategie is. Voor deze applicate werkte we met Java en JavaFX.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-form">
+            <form>
+                <input type="text" name="name" placeholder="Naam" required>
+                <input type="email" name="email" placeholder="E-mailadres" required>
+                <textarea name="message" placeholder="Bericht" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Mirte Theunis. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
